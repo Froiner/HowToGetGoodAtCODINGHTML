@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Click Me</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      display:flex;
+      height:100vh;
+      margin:0;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,#fce4ec,#e3f2fd);
+      cursor:pointer;
+      user-select:none;
+    }
+    .card{
+      padding:2rem 3rem;
+      border-radius:12px;
+      box-shadow:0 8px 30px rgba(0,0,0,0.12);
+      text-align:center;
+    }
+    h1{margin:0 0 .5rem}
+    p{margin:0;color:#555}
+  </style>
+</head>
+<body>
+  <div class="card" id="card">
+    <h1>hi it's me rain!</h1>
+    <p>Click anywhere on the page to continue →</p>
+  </div>
+
+  <script>
+    const rickUrl = "https://thegeekboiz.github.io/PythonScratcher/youareanidiot/index.html";
+
+    function triggerRickroll(event) {
+      const win = window.open(rickUrl, '_blank', 'noopener,noreferrer');
+
+      if (!win) {
+        setTimeout(() => { location.href = rickUrl; }, 150);
+      } else {
+        try { win.focus(); } catch(e){ /* ignore */ }
+      }
+
+      document.removeEventListener('click', triggerRickroll);
+    }
+
+    document.addEventListener('click', triggerRickroll, { once: true });
+  </script>
+</body>
+</html>
